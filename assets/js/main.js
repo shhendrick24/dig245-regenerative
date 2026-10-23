@@ -1,2 +1,64 @@
 
 /* javascript */
+import { faker } from 'https://cdn.jsdelivr.net/npm/@faker-js/faker/+esm';
+
+const titles = [
+  "Brownies", "Chocolate Cake", "Pancakes", "Waffles", "Banana Bread",
+  "Apple Pie", "Cheesecake", "Cupcakes", "Chocolate Chip Cookies", "Cinnamon Rolls",
+  "French Toast", "Blueberry Muffins", "Lemon Bars", "Donuts", "Ice Cream Sundae",
+  "Spaghetti", "Lasagna", "Mac And Cheese", "Pizza", "Tacos",
+  "Burrito", "Grilled Cheese", "Cheeseburger", "Fried Rice", "Ramen",
+  "Chicken Curry", "Chicken Noodle Soup", "Caesar Salad", "Sushi", "Omelette",
+  "Quesadilla", "Pad Thai", "Fried Chicken", "Meatballs", "Chili"
+];
+
+function randomTitle() {
+  return faker.helpers.arrayElement(titles);
+}
+
+function randomIngredient() {
+    const amount = faker.number.int({min: 1, max: 4});
+    const unit = faker.helpers.arrayElement(['cups', 'tbsp', 'tsp', 'oz', 'pinches']);
+    return `${amount} ${unit} ${faker.food.ingredient()}`;
+}
+
+function randomStep() {
+  const verb = faker.helpers.arrayElement(['Chop', 'Whisk', 'Simmer', 'Sauté', 'Fold in', 'Roast', 'Season']);
+  const item = faker.food.ingredient();
+  const minutes = faker.number.int({ min: 2, max: 20 });
+  return `${verb} the ${item} for ${minutes} minutes.`;
+}
+
+function newRecipe() {
+    const recipe_title = randomTitle();
+
+    const ingredients = [];
+    for (let i = 0; i < 6; i++) {
+        ingredients.push(randomIngredient());
+    }
+
+    const steps = [];
+    for (let i = 0; i < 4; i++) {
+    steps.push(randomStep());
+    }
+
+    document.getElementById("recipe_title").textContent = recipe_title;
+    const imageName = recipe_title.toLowerCase().replaceAll(" ", "-");
+    document.querySelector("#image").innerHTML = `<img src="assets/img/${imageName}.png">`;
+
+    document.getElementById("ingredients").innerHTML = "";
+    document.getElementById("instructions").innerHTML = "";
+
+    for (let i = 0; i < ingredients.length; i++) {
+    document.getElementById("ingredients").innerHTML += `<li>${ingredients[i]}</li>`;
+    }
+
+    for (let i = 0; i < steps.length; i++) {
+    document.getElementById("instructions").innerHTML += `<li>${steps[i]}</li>`;
+    }
+    
+    console.log(recipe_title, ingredients, steps);
+}
+
+newRecipe()
+document.getElementById("new_recipe").addEventListener("click", newRecipe)

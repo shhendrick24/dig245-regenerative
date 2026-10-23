@@ -1,19 +1,49 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <!-- meta tags, links to css, etc. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Generative Design</title>
+    <title>Endless Recipe</title>
+    <!-- Apply the page's styles. -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
-    <!-- visible content goes here -->
-	<h1>Generative Design</h1>
-	<p>See README.md for info</p>
+    <!-- Main recipe card: JavaScript fills in the title and can update the recipe content. -->
+    <main class="card">
+        <h1>Recipe for <span id="recipe_title"></span></h1>
+        <div id="image">
+            <img src="assets/img/brownies.png" alt="Image of brownies">
+        </div>
 
-    <!-- load javascript after the page elements render -->
-    <script src="assets/js/main.js"></script>
+        <!-- Group the recipe details into ingredient and instruction sections. -->
+        <div class="columns">
+            <section class="ingredients">
+                <h2>Ingredients</h2>
+                <ul id="ingredients">
+                    <li>1/2 cup butter</li>
+                    <li>1 cup sugar</li>
+                    <li>2 eggs</li>
+                </ul>
+            </section>
+
+            <section class="instructions">
+                <h2>Instructions</h2>
+                <ol id="instructions">
+                    <li>Preheat oven to 350 degrees F</li>
+                    <li>Mix together butter, sugar, and eggs</li>
+                </ol>
+            </section>
+        </div>
+
+        <!-- Clicking this button is intended to generate a new recipe. -->
+        <button id="new_recipe">New recipe</button>
+    </main>
+
+    <!-- Load JavaScript after the markup so it can access the elements above. -->
+    <script type="module" src="assets/js/main.js"></script>
 </body>
+
 </html>
