@@ -1,17 +1,44 @@
 
 /* css */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Georgia, serif;
-  max-width: 600px;
   margin: 40px auto;
   padding: 0 16px;
   background: #fffaf0;
   color: #222;
 }
 
+.card {
+  background-color: #f4e7c5;
+  border: 1 px solid #d8c49a;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  font-family: "Kalam", cursive;
+  color: #3b2f2a;
+}
+
 #image {
-  font-size: 120px;
   text-align: center;
+}
+
+#image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (min-width: 1000px) {
+  body {
+    max-width: 850px;  
+  }
+
+  #image img {
+    width: 50%;
+  }
 }
 
 h1 {
@@ -19,9 +46,12 @@ h1 {
 }
 
 button {
+  background-color: #3b2f2a;
+  color: white;
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  position: relative;
 }
